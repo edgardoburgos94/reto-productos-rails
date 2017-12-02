@@ -1,2 +1,22 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<div class="container">
+
+  <%= form_for @product do |f| %>
+    <%= f.text_field :name, placeholder: "Nombre del producto" %> <br>
+    <%= f.text_field :price, placeholder: "Precio del producto" %> <br>
+    <% @categories.each do |category|%>
+      <%= check_box_tag "category[c"+category.id.to_s+"]", value = "1", checked = false, options = {} %><%=category.name%><br>
+    <%end%>
+    <!-- <%= check_box_tag "category[Enlatados]", value = "1", checked = false, options = {} %> Enlatados<br>
+    <%= check_box_tag "category[Carnes rojas]", value = "1", checked = false, options = {} %> Carnes rojas<br>
+    <%= check_box_tag "category[c]", value = "1", checked = false, options = {} %> Carnes blancas<br> -->
+    <%= f.submit "Guardar" %>
+  <% end %>
+
+
+  <!-- "Enlatados"
+  ""
+  ""
+  "Aseo personal"
+  "Orgánico" -->
+
+</div>

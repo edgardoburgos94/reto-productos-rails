@@ -10,10 +10,17 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
-    puts("....................los resultados del checkbox son.....................")
+    puts("....................los resultados del checkbox son!!!.....................")
     puts(product_params)
-    puts(category_params)
-
+    categories = category_params
+    puts(categories)
+    if categories != nil
+      categories.each do |category|
+        id = category[1..-1].to_i
+        puts("el id es #{id}")
+        Category.find(id).products << @product
+      end
+    end
     if @product.save
       redirect_to products_path
     else
@@ -33,6 +40,6 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price)
   end
   def category_params
-    params.require(:category).permit! if params[:ad].present?
+    params.require(:category).permit! if params[:category].present?
   end
 end

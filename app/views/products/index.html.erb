@@ -19,7 +19,7 @@
         <%categorias = categorias + " "+ category.name%>
       <%end%>
       <td><%=categorias%></td>
-      <td><%=link_to "Editar", edit_product_path(product) %><%=link_to "Eliminar", product, method: :delete, data: {confirm: "¿Está seguro de eliminar este producto?"} %></td>
+      <td><%=link_to "Editar", edit_product_path(product) %><%=link_to "Eliminar", product, method: :delete %></td>
       <%end%>
 
   </table>
